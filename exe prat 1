@@ -1,0 +1,141 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+/*ATENCAO: COPIE E COLE ESSE CODIGO EM SUA IDE DE PREFERENCIA. EXECUTE E COMPREENDA O QUE ESTA IMPLEMENTADO PRIMEIRO, SOMENTE DEPOIS FAÇA OS EXERCICIOS*/
+
+/* 1- Crie uma TAD para representar uma pessoa que ira ser cadastrado em um sistema de academia.
+Dados necessarios: nome, matricula, idade, peso, altura*/
+
+typedef struct Pessoa{
+    char *nome;
+    int matricula;
+    int idade;
+    float peso;
+    float altura;
+}aluno;
+
+
+/* 2- Crie uma funcao que recebe os dados de um aluno da academia pelo terminal, salva esses dados 
+em uma tad e apresenta no terminal seu nome e IMC */
+
+void cria_tad_aluno(){
+    
+    aluno p1; 
+    char nome[100];
+    printf("Digite o nome do aluno: \n"); 
+    scanf("%s", nome);
+    p1.nome = nome;
+    printf("Digite a matricula do aluno: \n");  
+    scanf("%d", &p1.matricula);
+    printf("Digite a idade do aluno: \n");  
+    scanf("%d", &p1.idade);
+    printf("Digite a peso do aluno: \n"); 
+    scanf("%f", &p1.peso);
+    printf("Digite a altura do aluno: \n");
+    scanf("%f", &p1.altura);
+    
+    float imc = p1.peso/(p1.altura*p1.altura);
+    printf("O aluno %s tem o imc = %.2f.\n", p1.nome, imc);
+}
+
+/* 3 - Crie uma TAD para representar um produto que ira ser cadastrado em um sistema de supermecado.
+Dados necessarios: nome do produto, codigo de barra, preco, dia, mes e ano de validade*/
+
+typedef struct Produto{
+   //coloque aqui os dados do produto
+    char *nome;
+    int CodBarras;
+    float Preço;
+    int dia,mes,ano;
+}produto;
+
+
+/* 4 - Crie uma funcao que recebe os dados de um produto pelo terminal, salva esses dados 
+em uma tad, verifica se ele esta dentro da validade, se sim apresenta no terminal seu nome 
+e seu preco com desconto de 20%.
+Se o produto esta fora da validade apenas apresenta seu nome e a informacao: fora da validade!*/
+
+//Dica:
+void cria_tad_produto(){
+    produto p1;
+    char nome[100];
+    printf("Qual o nome do produto: \n");
+    scanf("%s", nome);
+    p1.nome = nome;
+    printf("Qual o seu codigo de barras? \n");
+    scanf("%d",&p1.CodBarras);
+    printf("Qual o seu preço ? \n");
+    scanf("%f",&p1.Preço);
+    printf("Qual o dia da sua validade? \n");
+    scanf("%d",&p1.dia);
+    printf("Qual o mes da sua validade? \n");
+    scanf("%d",&p1.mes);
+    printf("Qual o ano da sua validade? \n");
+    scanf("%d",&p1.ano);
+    
+    float desconto = p1.Preço * 0.2;
+    
+    if (p1.dia >= 8 & p1.mes >= 3 & p1.ano >=2024){
+        printf("Produto fora da validade \n");
+        
+    }else{
+        printf("Produto dentro da validade e o seu desconto e R$ %.2f \n",desconto);
+    }
+    
+    //declare a varivel do tipo produto;
+    //coloque o printf e o scanf para carregar cada um dos dados:
+    //coloque separado o dia, mes e ano, uma variavel inteira para cada valor.
+    //faca um conjunto de ifs para comparar o dia, mes e ano, com o dia atual:
+    //use o dia da aula pratica como dia atual.
+    //caso o produto esteja dentro da validade faca o calculo do desconto (0.2*preco do produto);
+    //coloque um printf com o nome do produto e o valor deste calculo.
+    //caso nao esteja dentro da validade basta colocar um printf com o nome do produto e a frase "fora da validade".
+}
+
+/*5 - Crie um TAD para representar um aluno da disciplina de ED que ira ser cadastrado em um sistema no sigaa
+Dados necessarios: nome, matricula, nota da avaliacao teorica, nota do trabalho de ordenacao, nota dos exercicios praticos*/
+typedef struct Aluno{
+    char *nome;
+    int matricula;
+    float notaavteo;
+    float notatrabord;
+    float notaexeprat;
+}alunoed;
+
+void cria_tad_alunoed(){
+    alunoed a1; 
+    char nome[100];
+    printf("Digite o nome do aluno: \n"); 
+    scanf("%s", nome);
+    a1.nome = nome;
+    printf("Digite a matricula do aluno: \n");  
+    scanf("%d", &a1.matricula);
+    printf("Digite a nota da avaliacao teorica do aluno: \n");  
+    scanf("%f", &a1.notaavteo);
+    printf("Digite a nota do trabalho de ordenacao do aluno: \n"); 
+    scanf("%f", &a1.notatrabord);
+    printf("Digite a nota dos exercicios praticos do aluno: \n");
+    scanf("%f", &a1.notaexeprat);
+    
+    if (((a1.notaavteo + a1.notaexeprat + a1.notatrabord)/3) >= 7){
+        printf("aluno aprovado!!!! \n");
+    }else{
+        printf("aluno reprovado!!!! \n");
+    }
+}
+//agora não temos mais dicas e com vocês! :D 
+
+/*6 - Crie uma funcao que recebe os dados do aluno por terminal, salva esses dados 
+em uma tad e aresenta no terminal o nome do aluno e se ele esta aprovado, 
+reprovado ou de final na disciplina*/
+
+//agora não temos mais dicas e com vocês! :D 
+
+int main(){
+
+   cria_tad_aluno();
+   cria_tad_produto();
+   cria_tad_alunoed();
+   //colocar aqui a chamda da funcao criada na questao 6.
+    return 0;
+}
